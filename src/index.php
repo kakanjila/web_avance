@@ -1,8 +1,8 @@
 <?php
 require 'config/database.php';
 
-// Récupérer les articles publiés
-$articles = $pdo->query("SELECT * FROM articles WHERE statut='publie' ORDER BY date_publication DESC")->fetchAll();
+// Récupérer tous les articles
+$articles = $pdo->query("SELECT * FROM articles ORDER BY created_at DESC")->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -16,8 +16,8 @@ $articles = $pdo->query("SELECT * FROM articles WHERE statut='publie' ORDER BY d
 
     <?php foreach ($articles as $article): ?>
         <div>
-            <h2><?= htmlspecialchars($article['titre']) ?></h2>
-            <p><?= substr(strip_tags($article['contenu']), 0, 100) ?>...</p>
+            <h2><?= htmlspecialchars($article['title']) ?></h2>
+            <p><?= substr(strip_tags($article['content']), 0, 100) ?>...</p>
         </div>
     <?php endforeach; ?>
 </body>
