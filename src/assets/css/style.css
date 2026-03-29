@@ -34,9 +34,9 @@
     --color-lighter: #f1ecff;
     
     /* Gris */
-    --color-gray: #5a6c7d;
-    --color-gray-dark: #6b7a8a;
-    --color-gray-light: #d8dce3;
+    --color-gray: #3d4a57;
+    --color-gray-dark: #2d3f4f;
+    --color-gray-light: #a8b8c4;
     --color-gray-lighter: #e8eaef;
     
     /* Bordures */
@@ -73,9 +73,9 @@ html {
 
 body {
     font-family: 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFont, sans-serif;
-    color: var(--color-gray);
+    color: #3d4a57;
     background: linear-gradient(135deg, #ffffff 0%, #fafbff 50%, #f5f7ff 100%);
-    line-height: 1.6;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
@@ -88,13 +88,20 @@ img {
 }
 
 a {
-    color: var(--color-primary);
+    color: #4c2fdd;
     text-decoration: none;
     transition: var(--transition-fast);
 }
 
 a:hover {
-    color: var(--color-accent);
+    color: #00d2d3;
+    text-decoration: underline;
+}
+
+a:focus-visible {
+    outline: 3px solid #00d2d3;
+    outline-offset: 2px;
+    border-radius: 3px;
 }
 
 .container {
@@ -241,7 +248,7 @@ main {
 
 .article-content h2 {
     font-size: clamp(1.1rem, 3vw, 1.5rem);
-    color: #5a6c7d;
+    color: #2d3f4f;
     margin-bottom: 0.75rem;
     line-height: 1.4;
     transition: var(--transition-fast);
@@ -375,7 +382,7 @@ main {
 .article-detail h1 {
     font-size: clamp(1.8rem, 5vw, 2.8rem);
     margin-bottom: 1rem;
-    color: #5a6c7d;
+    color: #2d3f4f;
     line-height: 1.3;
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
     -webkit-background-clip: text;
@@ -403,7 +410,7 @@ main {
 .related-section h2 {
     font-size: clamp(1.5rem, 4vw, 2rem);
     margin-bottom: 2rem;
-    color: #5a6c7d;
+    color: #2d3f4f;
     position: relative;
     padding-left: 15px;
 }
@@ -459,9 +466,9 @@ main {
    TYPOGRAPHIE
    ========================= */
 h1, h2, h3, h4, h5, h6 {
-    line-height: 1.2;
+    line-height: 1.3;
     font-weight: 700;
-    color: #5a6c7d;
+    color: #2d3f4f;
     margin-bottom: 0.5rem;
 }
 
@@ -480,12 +487,26 @@ p {
 }
 
 code {
-    background: var(--color-lighter);
+    background: #f5f0ff;
     padding: 0.2rem 0.4rem;
     border-radius: 4px;
-    color: var(--color-primary-dark);
+    color: #4c2fdd;
     font-family: 'Courier New', monospace;
     font-size: 0.9em;
+}
+
+/* Focus visible pour tous les éléments interactifs */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 3px solid #00d2d3;
+    outline-offset: 2px;
+}
+
+/* Amélioration ligne-height pour lisibilité */
+p {
+    line-height: 1.8;
 }
 
 /* =========================
@@ -706,8 +727,8 @@ footer p {
 
 @media (prefers-color-scheme: dark) {
     body {
-        background: #f0f2f7;
-        color: #5a6c7d;
+        background: #e8eef7;
+        color: #2d3f4f;
     }
 
     .article-card,
@@ -718,11 +739,11 @@ footer p {
     }
 
     h1, h2, h3, h4, h5, h6 {
-        color: #5a6c7d;
+        color: #2d3f4f;
     }
 
     p {
-        color: #5a6c7d;
+        color: #3d4a57;
     }
 }
 

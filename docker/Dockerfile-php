@@ -9,5 +9,8 @@ RUN apt-get update && apt-get install -y \
 # Activer le module Apache rewrite
 RUN a2enmod rewrite
 
+# Activer AllowOverride pour .htaccess
+RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+
 # Copier le code de votre projet (optionnel ici)
 COPY . /var/www/html/
