@@ -1,0 +1,57 @@
+/* =========================
+   BOUTONS
+   ========================= */
+.btn {
+    display: inline-block;
+    padding: clamp(10px, 2vw, 12px) clamp(16px, 3vw, 24px);
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    border: 2px solid transparent;
+    cursor: pointer;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    touch-action: manipulation;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Bouton primaire */
+.btn-primary {
+    background-color: var(--color-accent);
+    color: white;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+/* Bouton secondaire */
+.btn-secondary {
+    color: var(--color-accent);
+    border: 2px solid var(--color-accent);
+    background-color: transparent;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background-color: var(--color-accent);
+    color: white;
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+/* =========================
+   ACTIONS D'ARTICLE
+   ========================= */
+.article-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(10px, 2vw, 15px);
+}

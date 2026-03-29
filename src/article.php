@@ -24,14 +24,14 @@ if (!$article) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Article non trouvé</title>
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
     </head>
     <body>
         <div class="container">
             <div class="error-404">
                 <h1>Article non trouvé</h1>
                 <p>Désolé, l'article que vous recherchez n'existe pas ou a été supprimé.</p>
-                <a href="index.php" class="btn btn-primary">Retour à l'accueil</a>
+                <a href="/" class="btn btn-primary">Retour à l'accueil</a>
             </div>
         </div>
     </body>
@@ -95,13 +95,13 @@ $meta_keywords = implode(', ', array_filter([
     <?php endif; ?>
     
     <!-- Feuille de style -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
     <div class="container">
         <!-- Fil d'Ariane -->
         <nav class="breadcrumb" aria-label="Fil d'Ariane">
-            <a href="index.php">Accueil</a>
+            <a href="/">Accueil</a>
             <span class="separator">/</span>
             <span class="current" aria-current="page"><?= htmlspecialchars($article['title']) ?></span>
         </nav>
@@ -134,7 +134,7 @@ $meta_keywords = implode(', ', array_filter([
             <?php if (!empty($article['image'])): ?>
                 <figure class="article-detail-image">
                     <img 
-                        src="assets/images/<?= htmlspecialchars($article['image']) ?>" 
+                        src="/assets/images/<?= htmlspecialchars($article['image']) ?>" 
                         alt="Illustration de : <?= htmlspecialchars($article['title']) ?>"
                         itemprop="image"
                     >
@@ -153,7 +153,7 @@ $meta_keywords = implode(', ', array_filter([
             <!-- Pied de l'article -->
             <footer class="article-detail-footer">
                 <div class="article-actions">
-                    <a href="index.php" class="btn btn-secondary">← Retour à la liste</a>
+                    <a href="/index.php" class="btn btn-secondary">← Retour à la liste</a>
                 </div>
             </footer>
         </article>
@@ -181,7 +181,7 @@ $meta_keywords = implode(', ', array_filter([
                         <?php if (!empty($related['image'])): ?>
                             <div class="related-article-image">
                                 <img 
-                                    src="assets/images/<?= htmlspecialchars($related['image']) ?>" 
+                                    src="/assets/images/<?= htmlspecialchars($related['image']) ?>" 
                                     alt="<?= htmlspecialchars($related['title']) ?>"
                                     itemprop="image"
                                 >
@@ -189,7 +189,7 @@ $meta_keywords = implode(', ', array_filter([
                         <?php endif; ?>
                         <div class="related-article-content">
                             <h3 class="related-article-title" itemprop="headline">
-                                <a href="article.php?slug=<?= urlencode($related['slug']) ?>" itemprop="url">
+                                <a href="/article/<?= urlencode($related['slug']) ?>" itemprop="url">
                                     <?= htmlspecialchars($related['title']) ?>
                                 </a>
                             </h3>

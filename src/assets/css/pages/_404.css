@@ -1,0 +1,24 @@
+/* =========================
+   PAGE 404 - NOT FOUND
+   ========================= */
+.error-404 {
+    text-align: center;
+    padding: clamp(50px, 8vw, 100px) clamp(20px, 3vw, 30px);
+    background: white;
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+    margin: clamp(30px, 5vw, 50px) 0;
+}
+
+.error-404 h1 {
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    color: var(--color-accent);
+    margin-bottom: clamp(12px, 3vw, 20px);
+}
+
+.error-404 p {
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    color: var(--color-gray);
+    margin-bottom: clamp(20px, 3vw, 30px);
+    line-height: var(--line-height-normal);
+}

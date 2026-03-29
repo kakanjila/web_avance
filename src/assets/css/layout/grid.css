@@ -1,0 +1,49 @@
+/* =========================
+   GRILLE D'ARTICLES
+   ========================= */
+.articles-container {
+    display: block;
+}
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: clamp(20px, 3vw, 30px);
+    margin-bottom: clamp(40px, 8vw, 60px);
+}
+
+/* =========================
+   ARTICLES CONNEXES
+   ========================= */
+.related-articles {
+    margin-top: clamp(40px, 8vw, 60px);
+    padding-top: clamp(30px, 5vw, 40px);
+    border-top: 2px solid var(--color-border);
+}
+
+.related-articles h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: clamp(20px, 3vw, 30px);
+}
+
+.related-articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: clamp(15px, 3vw, 25px);
+}
+
+/* =========================
+   ÉTAT VIDE
+   ========================= */
+.no-articles {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: clamp(40px, 8vw, 60px) clamp(20px, 3vw, 30px);
+    color: var(--color-gray);
+}
+
+.no-articles p {
+    font-size: clamp(1rem, 2vw, 1.1rem);
+}

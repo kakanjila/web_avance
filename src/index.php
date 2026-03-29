@@ -50,7 +50,7 @@ $current_url = $base_url . $_SERVER['REQUEST_URI'];
     <meta name="twitter:description" content="<?= htmlspecialchars($meta_description) ?>">
     
     <!-- Feuille de style -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
     <div class="container">
@@ -99,7 +99,7 @@ $current_url = $base_url . $_SERVER['REQUEST_URI'];
                                     </p>
                                 <?php endif; ?>
 
-                                <a href="article.php?slug=<?= urlencode($article['slug']) ?>" class="article-link" itemprop="url">
+                                <a href="article/<?= urlencode($article['slug']) ?>" class="article-link" itemprop="url">
                                     Lire l'article complet →
                                 </a>
                             </div>

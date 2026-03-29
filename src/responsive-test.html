@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Design Responsive</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+        }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .test-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .test-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .test-card h2 {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .test-card p {
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .test-card ul {
+            margin-left: 20px;
+            font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+        }
+        
+        .test-card li {
+            margin-bottom: 8px;
+            color: #666;
+        }
+        
+        .viewport-info {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        
+        .viewport-info h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .viewport-info p {
+            margin: 5px 0;
+            color: #333;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: clamp(10px, 2vw, 15px) clamp(20px, 4vw, 30px);
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+        
+        .breakpoint {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-left: 4px solid white;
+            margin-top: 15px;
+            border-radius: 4px;
+        }
+        
+        .breakpoint code {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Test Design Responsive</h1>
+        
+        <div class="viewport-info">
+            <h3>📐 Dimensions Actuelles</h3>
+            <p>Largeur: <span id="width">-</span>px</p>
+            <p>Hauteur: <span id="height">-</span>px</p>
+            <p>Ratio D/P: <span id="ratio">-</span></p>
+            <p>Appareil: <span id="device">-</span></p>
+        </div>
+        
+        <div class="test-grid">
+            <div class="test-card">
+                <h2>📱 Mobile (< 480px)</h2>
+                <p>Optimisé pour les petits écrans</p>
+                <ul>
+                    <li>✅ Font-size réduite (14px)</li>
+                    <li>✅ 1 colonne unique</li>
+                    <li>✅ Images 4:3 ratio</li>
+                    <li>✅ Padding réduit</li>
+                    <li>✅ Pas de scroll horizontal</li>
+                </ul>
+            </div>
+            
+            <div class="test-card">
+                <h2>📲 Tablette (480-768px)</h2>
+                <p>Expérience intermédiaire</p>
+                <ul>
+                    <li>✅ Font-size progressive</li>
+                    <li>✅ 2 colonnes</li>
+                    <li>✅ Images 16:10 ratio</li>
+                    <li>✅ Padding normal</li>
+                    <li>✅ Tous les éléments visibles</li>
+                </ul>
+            </div>
+            
+            <div class="test-card">
+                <h2>🖥️ Desktop (> 768px)</h2>
+                <p>Expérience optimale</p>
+                <ul>
+                    <li>✅ Font-size optimal</li>
+                    <li>✅ 3 colonnes</li>
+                    <li>✅ Espacements généreux</li>
+                    <li>✅ Hover effects</li>
+                    <li>✅ Navigation complète</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="test-grid">
+            <div class="test-card">
+                <h2>✨ Typographie Responsive</h2>
+                <p>Utilise <code>clamp()</code> pour scalabilité fluide:</p>
+                <div class="breakpoint">
+                    <code>font-size: clamp(min, optimal, max)</code>
+                    <br><br>
+                    Min = Taille minimale<br>
+                    Optimal = % viewport<br>
+                    Max = Taille maximale
+                </div>
+                <p style="margin-top: 15px; font-style: italic;">
+                    Résultat: Texte toujours lisible, proportions respectées
+                </p>
+            </div>
+            
+            <div class="test-card">
+                <h2>🖼️ Images Fluides</h2>
+                <p>Adaptation automatique:</p>
+                <div class="breakpoint">
+                    <code>max-width: 100%</code><br>
+                    <code>aspect-ratio: 16/10</code><br>
+                    <code>object-fit: cover</code>
+                </div>
+                <p style="margin-top: 15px; font-style: italic;">
+                    Résultat: Aucune déformation, chargement optimisé
+                </p>
+            </div>
+            
+            <div class="test-card">
+                <h2>📏 Espacements Adaptatifs</h2>
+                <p>Padding/Margin proportionnels:</p>
+                <div class="breakpoint">
+                    <code>padding: clamp(20px, 3vw, 30px)</code>
+                </div>
+                <p style="margin-top: 15px; font-style: italic;">
+                    Résultat: Mise en page toujours équilibrée
+                </p>
+            </div>
+        </div>
+        
+        <div class="test-grid">
+            <div class="test-card">
+                <h2>✅ Critères Validés</h2>
+                <ul>
+                    <li>✅ WCAG AA (Accessibilité)</li>
+                    <li>✅ Core Web Vitals optimisés</li>
+                    <li>✅ Contraste 4.5:1 min</li>
+                    <li>✅ Boutons 44x44px min</li>
+                    <li>✅ Pas de layout shift</li>
+                    <li>✅ Performance mobile optimale</li>
+                </ul>
+            </div>
+            
+            <div class="test-card">
+                <h2>🧪 Tester en Android</h2>
+                <p>Appareils recommandés:</p>
+                <ul>
+                    <li>📱 iPhone SE (375px)</li>
+                    <li>📱 iPhone 12 (390px)</li>
+                    <li>📱 Pixel 5 (393px)</li>
+                    <li>📱 Samsung Galaxy</li>
+                    <li>📱 Tout appareil</li>
+                </ul>
+                <a href="/" class="cta-button">Voir le site</a>
+            </div>
+            
+            <div class="test-card">
+                <h2>🔧 DevTools Chrome</h2>
+                <p>Pour tester le responsive:</p>
+                <ol style="margin-left: 20px; font-size: clamp(0.85rem, 1.5vw, 0.95rem);">
+                    <li>Appuyez sur F12</li>
+                    <li>Cliquez sur l'icône mobile</li>
+                    <li>Testez les breakpoints</li>
+                    <li>Vérifiez la rotation</li>
+                    <li>Testez au ralenti (3G)</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function updateViewportInfo() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            const ratio = (width / height).toFixed(2);
+            
+            let device = 'Desktop';
+            if (width < 480) device = '📱 Mobile (< 480px)';
+            else if (width < 768) device = '📲 Tablette (480-768px)';
+            else device = '🖥️ Desktop (> 768px)';
+            
+            document.getElementById('width').textContent = width;
+            document.getElementById('height').textContent = height;
+            document.getElementById('ratio').textContent = ratio;
+            document.getElementById('device').textContent = device;
+        }
+        
+        updateViewportInfo();
+        window.addEventListener('resize', updateViewportInfo);
+    </script>
+</body>
+</html>

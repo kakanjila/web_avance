@@ -1,0 +1,29 @@
+/* =========================
+   VARIABLES GLOBALES
+   ========================= */
+:root {
+    --color-primary: #1a3a52;
+    --color-accent: #e74c3c;
+    --color-light: #f8f9fa;
+    --color-gray: #6c757d;
+    --color-gray-light: #e9ecef;
+    --color-border: #dee2e6;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+    --transition: all 0.3s ease;
+    
+    /* Typographie responsive */
+    --font-size-base: 16px;
+    --font-size-h1: 2.5rem;
+    --font-size-h2: 2rem;
+    --font-size-h3: 1.5rem;
+    --line-height-tight: 1.2;
+    --line-height-normal: 1.6;
+    --line-height-loose: 1.9;
+    
+    /* Breakpoints */
+    --breakpoint-sm: 480px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1200px;
+}

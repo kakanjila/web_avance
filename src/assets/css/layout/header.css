@@ -1,0 +1,65 @@
+/* =========================
+   HEADER / EN-TÊTE
+   ========================= */
+.header {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #2d5a7b 100%);
+    color: white;
+    padding: clamp(40px, 10vw, 60px) 1rem;
+    text-align: center;
+    margin-bottom: clamp(30px, 5vw, 50px);
+    border-radius: 8px;
+    box-shadow: var(--shadow-lg);
+}
+
+.page-title {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    font-weight: 700;
+    line-height: var(--line-height-tight);
+    margin-bottom: clamp(8px, 2vw, 12px);
+    letter-spacing: -0.02em;
+}
+
+.page-subtitle {
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    font-weight: 300;
+    opacity: 0.95;
+    margin: 0;
+    line-height: var(--line-height-normal);
+}
+
+/* =========================
+   MAIN LAYOUT
+   ========================= */
+main {
+    width: 100%;
+}
+
+section {
+    width: 100%;
+}
+
+/* =========================
+   BREADCRUMB
+   ========================= */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 30px 0;
+    font-size: 0.9rem;
+    color: var(--color-gray);
+}
+
+.breadcrumb a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb .separator {
+    color: var(--color-gray-light);
+}

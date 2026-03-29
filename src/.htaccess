@@ -1,0 +1,57 @@
+# Activation du module mod_rewrite
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # Empêcher l'accès direct aux fichiers/dossiers sensibles
+    RewriteRule ^(config|assets)(/|$) - [F]
+    
+    # Ne pas rewriter les fichiers existants
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+    
+    # Réécriture de l'accueil
+    RewriteRule ^/?$ index.php [L]
+    
+    # Réécriture pour les articles : /article/[slug] -> article.php?slug=[slug]
+    RewriteRule ^article/([a-z0-9-]+)/?$ article.php?slug=$1 [L,QSA]
+    
+    # Réécriture pour les articles (variante) : /actualites/[slug] -> article.php?slug=[slug]
+    RewriteRule ^actualites/([a-z0-9-]+)/?$ article.php?slug=$1 [L,QSA]
+    
+    # Réécriture pour la page articles : /articles -> index.php
+    RewriteRule ^articles/?$ index.php [L]
+    RewriteRule ^actualites/?$ index.php [L]
+    
+</IfModule>
+
+# Compression et cache
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Entêtes de sécurité et cache
+<IfModule mod_headers.c>
+    # Empêcher la mise en cache des fichiers HTML
+    <FilesMatch "\.(html|php)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+    
+    # Activer le cache pour les assets
+    <FilesMatch "\.(jpg|jpeg|png|gif|ico|css|js|woff|woff2|ttf|svg)$">
+        Header set Cache-Control "max-age=31536000, public"
+    </FilesMatch>
+    
+    # Entêtes de sécurité
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# Ajouter le type MIME pour WebP
+<IfModule mod_mime.c>
+    AddType image/webp .webp
+</IfModule>
