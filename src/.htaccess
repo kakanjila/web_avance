@@ -4,9 +4,9 @@
     RewriteBase /
     
     # Empêcher l'accès direct aux fichiers/dossiers sensibles
-    RewriteRule ^(config|assets)(/|$) - [F]
+    RewriteRule ^config(/|$) - [F]
     
-    # Ne pas rewriter les fichiers existants
+    # Ne pas rewriter les fichiers existants (permet l'accès aux assets)
     RewriteCond %{REQUEST_FILENAME} -f [OR]
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteRule ^ - [L]
