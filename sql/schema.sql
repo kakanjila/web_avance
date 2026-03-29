@@ -27,3 +27,6 @@ CREATE TABLE images (
 INSERT INTO users (username, password, role) VALUES
 ('admin', '$2y$10$examplehashedpassword', 'admin'),
 ('editor', '$2y$10$examplehashedpassword', 'editor');
+
+INSERT INTO articles (titre, slug, contenu, image, alt_image)
+VALUES ('Guerre en Iran 2026', 'guerre-iran-2026', '<p>Contenu de l\'article...</p>', 'iran.jpg', 'Image de la guerre en Iran');
