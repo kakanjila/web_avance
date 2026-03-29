@@ -21,7 +21,7 @@ $articles = $pdo->query("
     <?php foreach ($articles as $article): ?>
     <div class="article">
         <?php if (!empty($article['image'])): ?>
-            <img src="images/<?= htmlspecialchars($article['image']) ?>" alt="<?= htmlspecialchars($article['title']) ?>">
+            <img src="assets/images/<?= htmlspecialchars($article['image']) ?>" alt="<?= htmlspecialchars($article['title']) ?>" style="max-width: 100%; height: auto;">
         <?php endif; ?>
         <h2><?= htmlspecialchars($article['title']) ?></h2>
         <div class="date"><?= date('d/m/Y', strtotime($article['created_at'])) ?></div>

@@ -30,5 +30,5 @@ INSERT INTO users (username, password, role) VALUES
 ('admin', '$2y$10$examplehashedpassword', 'admin'),
 ('editor', '$2y$10$examplehashedpassword', 'editor');
 
-INSERT INTO articles (title, slug, content, meta_description, status)
-VALUES ('Guerre en Iran 2026', 'guerre-iran-2026', '<p>Contenu de l''article...</p>', 'Article sur la situation en Iran', 'published');
+INSERT INTO articles (title, slug, content, image, meta_description, status)
+VALUES ('Guerre en Iran 2026', 'guerre-iran-2026', '<p>Contenu de l''article...</p>', 'article1.jpg', 'Article sur la situation en Iran', 'published');
