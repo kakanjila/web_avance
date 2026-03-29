@@ -114,11 +114,11 @@ $meta_keywords = implode(', ', array_filter([
                 
                 <div class="article-detail-meta">
                     <time class="article-detail-date" datetime="<?= $article['created_at'] ?>" itemprop="datePublished">
-                        Publié le <?= strftime('%d %B %Y', strtotime($article['created_at'])); ?>
+                        Publié le <?= formatDateFR($article['created_at']); ?>
                     </time>
                     <?php if ($article['updated_at'] !== $article['created_at']): ?>
                         <span class="article-detail-updated" itemprop="dateModified" content="<?= $article['updated_at'] ?>">
-                            (Mis à jour le <?= strftime('%d %B %Y', strtotime($article['updated_at'])); ?>)
+                            (Mis à jour le <?= formatDateFR($article['updated_at']); ?>)
                         </span>
                     <?php endif; ?>
                 </div>
@@ -194,7 +194,7 @@ $meta_keywords = implode(', ', array_filter([
                                 </a>
                             </h3>
                             <time class="related-article-date" datetime="<?= $related['created_at'] ?>" itemprop="datePublished">
-                                <?= strftime('%d %B %Y', strtotime($related['created_at'])); ?>
+                                <?= formatDateFR($related['created_at']); ?>
                             </time>
                         </div>
                     </article>

@@ -82,24 +82,19 @@ $current_url = $base_url . $_SERVER['REQUEST_URI'];
                             <div class="article-content">
                                 <div class="article-meta">
                                     <time class="article-date" datetime="<?= $article['created_at'] ?>" itemprop="datePublished">
-                                        <?= strftime('%d %B %Y', strtotime($article['created_at'])); ?>
+                                        <?= formatDateFR($article['created_at']); ?>
                                     </time>
                                 </div>
 
                                 <h2 class="article-title" itemprop="headline"><?= htmlspecialchars($article['title']) ?></h2>
 
-                                <p class="article-excerpt" itemprop="description">
-                                    <?= htmlspecialchars(substr(strip_tags($article['content']), 0, 150)) ?>
-                                    <span class="ellipsis">...</span>
-                                </p>
-
                                 <?php if (!empty($article['meta_description'])): ?>
-                                    <p class="article-meta-description">
+                                    <p class="article-meta-description" itemprop="description">
                                         <?= htmlspecialchars($article['meta_description']) ?>
                                     </p>
                                 <?php endif; ?>
 
-                                <a href="article/<?= urlencode($article['slug']) ?>" class="article-link" itemprop="url">
+                                <a href="/article/<?= urlencode($article['slug']) ?>" class="article-link" itemprop="url">
                                     Lire l'article complet →
                                 </a>
                             </div>

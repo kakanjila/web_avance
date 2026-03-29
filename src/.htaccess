@@ -6,6 +6,9 @@
     # Empêcher l'accès direct aux fichiers/dossiers sensibles
     RewriteRule ^config(/|$) - [F]
     
+    # Rediriger /index.php vers / (meilleur pour SEO)
+    RewriteRule ^index\.php/?$ / [R=301,L]
+    
     # Ne pas rewriter les fichiers existants (permet l'accès aux assets)
     RewriteCond %{REQUEST_FILENAME} -f [OR]
     RewriteCond %{REQUEST_FILENAME} -d
