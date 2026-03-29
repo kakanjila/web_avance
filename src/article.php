@@ -158,50 +158,6 @@ $meta_keywords = implode(', ', array_filter([
             </footer>
         </article>
 
-        <!-- Articles connexes -->
-        <?php
-        // Récupérer les 3 derniers articles (sauf celui actuel)
-        $related_stmt = $pdo->prepare("
-            SELECT id, title, slug, image, created_at 
-            FROM articles 
-            WHERE status = 'published' AND id != ? 
-            ORDER BY created_at DESC 
-            LIMIT 3
-        ");
-        $related_stmt->execute([$article['id']]);
-        $related_articles = $related_stmt->fetchAll();
-        
-        if (count($related_articles) > 0):
-        ?>
-        <section class="related-articles" aria-label="Articles connexes">
-            <h2>Articles connexes</h2>
-            <div class="related-articles-grid">
-                <?php foreach ($related_articles as $related): ?>
-                    <article class="related-article-card" itemscope itemtype="https://schema.org/Article">
-                        <?php if (!empty($related['image'])): ?>
-                            <div class="related-article-image">
-                                <img 
-                                    src="/assets/images/<?= htmlspecialchars($related['image']) ?>" 
-                                    alt="<?= htmlspecialchars($related['title']) ?>"
-                                    itemprop="image"
-                                >
-                            </div>
-                        <?php endif; ?>
-                        <div class="related-article-content">
-                            <h3 class="related-article-title" itemprop="headline">
-                                <a href="/article/<?= urlencode($related['slug']) ?>" itemprop="url">
-                                    <?= htmlspecialchars($related['title']) ?>
-                                </a>
-                            </h3>
-                            <time class="related-article-date" datetime="<?= $related['created_at'] ?>" itemprop="datePublished">
-                                <?= formatDateFR($related['created_at']); ?>
-                            </time>
-                        </div>
-                    </article>
-                <?php endforeach; ?>
-            </div>
-        </section>
-        <?php endif; ?>
     </div>
     
     <!-- Schema.org JSON-LD pour l'article -->

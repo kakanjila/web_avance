@@ -88,12 +88,6 @@ $current_url = $base_url . $_SERVER['REQUEST_URI'];
 
                                 <h2 class="article-title" itemprop="headline"><?= htmlspecialchars($article['title']) ?></h2>
 
-                                <?php if (!empty($article['meta_description'])): ?>
-                                    <p class="article-meta-description" itemprop="description">
-                                        <?= htmlspecialchars($article['meta_description']) ?>
-                                    </p>
-                                <?php endif; ?>
-
                                 <a href="/article/<?= urlencode($article['slug']) ?>" class="article-link" itemprop="url">
                                     Lire l'article complet →
                                 </a>
