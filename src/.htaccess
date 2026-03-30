@@ -1,5 +1,14 @@
-﻿RewriteEngine On
+RewriteEngine On
 RewriteBase /
+
+# ============================================
+# Security Headers
+# ============================================
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
 
 # ============================================
 # GZIP Compression
@@ -9,7 +18,16 @@ RewriteBase /
     AddOutputFilterByType DEFLATE text/javascript application/javascript application/x-javascript
     AddOutputFilterByType DEFLATE application/json application/xml text/xml
     AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE font/woff2 application/font-woff2
 </IfModule>
+
+# ============================================
+# ETags
+# ============================================
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+FileETag None
 
 # ============================================
 # Browser Caching
@@ -30,11 +48,9 @@ RewriteBase /
 </IfModule>
 
 <IfModule mod_headers.c>
-    # Cache static assets
     <FilesMatch "\.(css|js|jpg|jpeg|png|gif|webp|svg|ico|woff|woff2)$">
         Header set Cache-Control "public, max-age=31536000, immutable"
     </FilesMatch>
-    # No cache for HTML/PHP
     <FilesMatch "\.(php|html)$">
         Header set Cache-Control "no-cache, must-revalidate"
     </FilesMatch>
@@ -43,11 +59,13 @@ RewriteBase /
 # ============================================
 # URL Rewriting
 # ============================================
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
 
+# Root URL -> frontoffice
 RewriteRule ^$ frontoffice/index.php [L]
 
+# Other rewrites only if not an existing file/directory
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^article/([a-zA-Z0-9_-]+)/?$ frontoffice/article.php?slug=$1 [L,QSA]
 
 RewriteRule ^admin/?$ backoffice/login.php [L]
