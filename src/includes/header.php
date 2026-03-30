@@ -1,8 +1,5 @@
 <?php
-/**
- * Header du FrontOffice
- * Variables attendues : $pageTitle, $metaDescription (optionnelles)
- */
+
 if (!isset($pageTitle)) $pageTitle = 'La Guerre en Iran - Informations et Analyses';
 if (!isset($metaDescription)) $metaDescription = 'Site d\'informations complet sur la guerre en Iran : contexte historique, acteurs internationaux, impact humanitaire et conséquences économiques.';
 ?>
