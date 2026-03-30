@@ -1,18 +1,12 @@
-RewriteEngine On
+﻿RewriteEngine On
 RewriteBase /
 
-# ============================================
-# Security Headers
-# ============================================
 <IfModule mod_headers.c>
     Header set X-Content-Type-Options "nosniff"
     Header set X-Frame-Options "SAMEORIGIN"
     Header set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
 
-# ============================================
-# GZIP Compression
-# ============================================
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/html text/plain text/css
     AddOutputFilterByType DEFLATE text/javascript application/javascript application/x-javascript
@@ -21,17 +15,11 @@ RewriteBase /
     AddOutputFilterByType DEFLATE font/woff2 application/font-woff2
 </IfModule>
 
-# ============================================
-# ETags — remove to avoid 304 overhead
-# ============================================
 <IfModule mod_headers.c>
     Header unset ETag
 </IfModule>
 FileETag None
 
-# ============================================
-# Browser Caching
-# ============================================
 <IfModule mod_expires.c>
     ExpiresActive On
     ExpiresDefault "access plus 1 month"
@@ -48,19 +36,14 @@ FileETag None
 </IfModule>
 
 <IfModule mod_headers.c>
-    # Cache static assets
     <FilesMatch "\.(css|js|jpg|jpeg|png|gif|webp|svg|ico|woff|woff2)$">
         Header set Cache-Control "public, max-age=31536000, immutable"
     </FilesMatch>
-    # No cache for HTML/PHP
     <FilesMatch "\.(php|html)$">
         Header set Cache-Control "no-cache, must-revalidate"
     </FilesMatch>
 </IfModule>
 
-# ============================================
-# URL Rewriting
-# ============================================
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
