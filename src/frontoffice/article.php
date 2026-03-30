@@ -66,7 +66,7 @@ require_once __DIR__ . '/../includes/header.php';
     <figure class="article-main-image">
         <img src="<?= e($article['image_path']) ?>" 
              alt="<?= e($article['image_alt'] ?? $article['title']) ?>" 
-             itemprop="image" loading="lazy"
+             itemprop="image" fetchpriority="high"
              width="800" height="400">
     </figure>
     <?php endif; ?>

@@ -48,6 +48,6 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 header.classList.remove('scrolled');
             }
-        });
+        }, { passive: true });
     }
 });
