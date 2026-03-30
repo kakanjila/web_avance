@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * BackOffice - Header
+ * Variables attendues : $boPageTitle (optionnel)
+ */
 require_once __DIR__ . '/../includes/auth.php';
 requireLogin();
 

@@ -1,8 +1,12 @@
 <?php
+/**
+ * BackOffice - Page de connexion
+ */
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../includes/functions.php';
 require_once __DIR__ . '/../includes/auth.php';
 
+// Si déjà connecté, rediriger vers le dashboard
 if (isLoggedIn()) {
     header('Location: /backoffice/dashboard.php');
     exit;
