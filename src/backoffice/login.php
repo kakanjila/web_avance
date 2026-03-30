@@ -51,11 +51,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="form-group">
                     <label for="username">Nom d'utilisateur</label>
                     <input type="text" id="username" name="username" required autofocus 
-                           value="<?= e($username ?? '') ?>" autocomplete="username">
+                           value="admin" autocomplete="username">
                 </div>
                 <div class="form-group">
                     <label for="password">Mot de passe</label>
-                    <input type="password" id="password" name="password" required autocomplete="current-password">
+                    <input type="password" id="password" name="password" required autocomplete="current-password" value="password">
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
             </form>
