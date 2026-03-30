@@ -1,0 +1,32 @@
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>La Guerre en Iran</h3>
+                    <p>Site d'informations sur les conflits en Iran. Ressource éducative pour comprendre le contexte historique et les enjeux géopolitiques.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="/">Accueil</a></li>
+                        <li><a href="/article/contexte-historique-conflit-iran">Contexte historique</a></li>
+                        <li><a href="/article/guerre-iran-irak-1980-1988">Guerre Iran-Irak</a></li>
+                        <li><a href="/article/chronologie-evenements-majeurs">Chronologie</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>À propos</h3>
+                    <p>Mini-projet Web Design - Mars 2026</p>
+                    <p>Travail en binôme</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <?= date('Y') ?> La Guerre en Iran - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>
