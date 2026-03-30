@@ -1,16 +1,22 @@
 <?php
-
+/**
+ * Gestion de l'authentification
+ */
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-
+/**
+ * Vérifie si l'utilisateur est connecté
+ */
 function isLoggedIn(): bool {
     return isset($_SESSION['user_id']);
 }
 
-
+/**
+ * Exige une connexion - redirige sinon
+ */
 function requireLogin(): void {
     if (!isLoggedIn()) {
         header('Location: /backoffice/login.php');
@@ -18,6 +24,9 @@ function requireLogin(): void {
     }
 }
 
+/**
+ * Tente de connecter un utilisateur
+ */
 function attemptLogin(PDO $pdo, string $username, string $password): bool {
     $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username");
     $stmt->execute(['username' => $username]);
@@ -33,6 +42,9 @@ function attemptLogin(PDO $pdo, string $username, string $password): bool {
     return false;
 }
 
+/**
+ * Déconnecte l'utilisateur
+ */
 function logout(): void {
     $_SESSION = [];
     if (ini_get("session.use_cookies")) {

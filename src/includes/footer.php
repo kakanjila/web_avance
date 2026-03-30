@@ -4,8 +4,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>La Guerre en Iran</h3>
-                    <p>Site d'informations sur les conflits en Iran. Ressource éducative pour comprendre le contexte historique et les enjeux géopolitiques.</p>
+                    <h3>Daily News</h3>
+                    <p>Votre source d'informations et d'analyses sur l'actualité internationale et les enjeux géopolitiques.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Navigation</h3>
@@ -23,10 +23,10 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; <?= date('Y') ?> La Guerre en Iran - Tous droits réservés</p>
+                <p>&copy; <?= date('Y') ?> Daily News — Tous droits réservés</p>
             </div>
         </div>
     </footer>
-    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/main.js" defer></script>
 </body>
 </html>
