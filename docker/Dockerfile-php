@@ -6,4 +6,9 @@ RUN apt-get update \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-install pdo pdo_pgsql
-RUN a2enmod rewrite
+RUN a2enmod rewrite deflate expires headers
+
+# Allow .htaccess overrides for URL rewriting
+RUN sed -i '/<Directory \/var\/www\/html>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+# If the above pattern doesn't match, also try the generic /var/www/ block
+RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
