@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $host = 'db'; 
 $dbname = 'seo';
 $user = 'admin';
