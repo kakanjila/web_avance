@@ -20,6 +20,9 @@ if ($isEdit) {
 
 $boPageTitle = $isEdit ? 'Modifier l\'article' : 'Nouvel article';
 
+// Récupérer les types d'articles pour le select
+$articleTypes = getArticleTypes($pdo);
+
 // Traitement du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = trim($_POST['title'] ?? '');
@@ -27,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $slug = trim($_POST['slug'] ?? '');
     $metaDescription = trim($_POST['meta_description'] ?? '');
     $imageAlt = trim($_POST['image_alt'] ?? '');
+    $typeId = isset($_POST['type_id']) && $_POST['type_id'] !== '' ? (int)$_POST['type_id'] : null;
     $published = isset($_POST['published']) ? true : false;
     
     // Validation
@@ -85,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($isEdit) {
             $stmt = $pdo->prepare("UPDATE articles SET title = :title, content = :content, slug = :slug, 
                 meta_description = :meta_description, image_path = :image_path, image_alt = :image_alt, 
-                published = :published, updated_at = CURRENT_TIMESTAMP WHERE id = :id");
+                type_id = :type_id, published = :published, updated_at = CURRENT_TIMESTAMP WHERE id = :id");
             $stmt->execute([
                 'title' => $title,
                 'content' => $content,
@@ -93,13 +97,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'meta_description' => $metaDescription,
                 'image_path' => $imagePath,
                 'image_alt' => $imageAlt,
+                'type_id' => $typeId,
                 'published' => $published ? 'true' : 'false',
                 'id' => $id
             ]);
             header('Location: /backoffice/articles.php?success=updated');
         } else {
-            $stmt = $pdo->prepare("INSERT INTO articles (title, content, slug, meta_description, image_path, image_alt, published) 
-                VALUES (:title, :content, :slug, :meta_description, :image_path, :image_alt, :published)");
+            $stmt = $pdo->prepare("INSERT INTO articles (title, content, slug, meta_description, image_path, image_alt, type_id, published) 
+                VALUES (:title, :content, :slug, :meta_description, :image_path, :image_alt, :type_id, :published)");
             $stmt->execute([
                 'title' => $title,
                 'content' => $content,
@@ -107,6 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'meta_description' => $metaDescription,
                 'image_path' => $imagePath,
                 'image_alt' => $imageAlt,
+                'type_id' => $typeId,
                 'published' => $published ? 'true' : 'false'
             ]);
             header('Location: /backoffice/articles.php?success=created');
@@ -123,6 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'meta_description' => $metaDescription,
         'image_path' => $imagePath,
         'image_alt' => $imageAlt,
+        'type_id' => $typeId,
         'published' => $published
     ];
 }
@@ -165,6 +172,18 @@ require_once __DIR__ . '/header.php';
         </div>
         
         <div class="form-col-4">
+            <div class="form-group">
+                <label for="type_id">Type d'article</label>
+                <select id="type_id" name="type_id">
+                    <option value="">— Aucun type —</option>
+                    <?php foreach ($articleTypes as $type): ?>
+                    <option value="<?= $type['id'] ?>" <?= (isset($article['type_id']) && (int)$article['type_id'] === (int)$type['id']) ? 'selected' : '' ?>>
+                        <?= htmlspecialchars($type['name'], ENT_QUOTES, 'UTF-8') ?>
+                    </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
             <div class="form-group">
                 <label for="meta_description">Méta description (SEO)</label>
                 <textarea id="meta_description" name="meta_description" rows="3" maxlength="160"

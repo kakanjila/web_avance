@@ -28,6 +28,7 @@ if (!isset($boPageTitle)) $boPageTitle = 'Administration';
                 <li><a href="/backoffice/dashboard.php" class="sidebar-link">📊 Tableau de bord</a></li>
                 <li><a href="/backoffice/articles.php" class="sidebar-link">📝 Articles</a></li>
                 <li><a href="/backoffice/article_form.php" class="sidebar-link">➕ Nouvel article</a></li>
+                <li><a href="/backoffice/article_types.php" class="sidebar-link">🏷️ Types d'articles</a></li>
                 <li class="sidebar-divider"></li>
                 <li><a href="/" class="sidebar-link" target="_blank">🌐 Voir le site</a></li>
                 <li><a href="/backoffice/logout.php" class="sidebar-link sidebar-logout">🚪 Déconnexion</a></li>
